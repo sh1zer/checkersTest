@@ -119,6 +119,7 @@ public class GameController {
         
         long moveTime = (System.currentTimeMillis() - moveStartTime) / 1000;
         System.out.println("Move took: " + moveTime + " seconds");
+        System.out.println("Player " + getCurrentPlayer() + "'s Turn");
         
         board.updateMovablePieces(getCurrentPlayer());
         startMoveTimer();

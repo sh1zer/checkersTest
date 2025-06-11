@@ -48,12 +48,10 @@ public class BoardLogic {
         return false;
     }
     
-    // Check if a specific piece has captures
     public boolean pieceHasCaptures(int row, int col) {
         return !getCaptureMoves(row, col).isEmpty();
     }
     
-    // Check if a move is a capture
     public boolean isCapture(Point from, Point to) {
         return Math.abs(to.x - from.x) == 2;
     }
@@ -72,11 +70,9 @@ public class BoardLogic {
             if (!isValidSquare(newRow, newCol)) continue;
             
             if (board[newRow][newCol] == null && !capturesOnly) {
-                // Regular move
                 moves.add(new Point(newRow, newCol));
             } else if (board[newRow][newCol] != null && 
                        board[newRow][newCol].getPlayer() != piece.getPlayer()) {
-                // Check for capture
                 int jumpRow = newRow + dir[0];
                 int jumpCol = newCol + dir[1];
                 if (isValidSquare(jumpRow, jumpCol) && board[jumpRow][jumpCol] == null) {
@@ -144,12 +140,10 @@ public class BoardLogic {
         return movable;
     }
     
-    // Keep original method for backward compatibility
     public List<Point> getMovablePieces(int player) {
         return getMovablePieces(player, false, null);
     }
     
-    // Updated makeMove to return if it was a capture
     public boolean makeMove(Point from, Point to) {
         Piece piece = board[from.x][from.y];
         board[to.x][to.y] = piece;
@@ -157,7 +151,6 @@ public class BoardLogic {
         
         boolean wasCapture = false;
         
-        // Handle captures
         if (Math.abs(to.x - from.x) == 2) {
             int capturedRow = (from.x + to.x) / 2;
             int capturedCol = (from.y + to.y) / 2;
@@ -165,7 +158,6 @@ public class BoardLogic {
             wasCapture = true;
         }
         
-        // Check for king promotion
         if ((piece.getPlayer() == Constants.PLAYER_1 && to.x == Constants.BOARD_SIZE - 1) ||
             (piece.getPlayer() == Constants.PLAYER_2 && to.x == 0)) {
             piece.makeKing();
@@ -199,7 +191,6 @@ public class BoardLogic {
             }
         }
         
-        // Reinitialize
         initializeBoard();
     }
 
