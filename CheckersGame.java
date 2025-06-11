@@ -7,7 +7,7 @@ public class CheckersGame extends JFrame {
         setupGUI();
     }
     
-    private void showGameModeDialog() {
+    /*private void showGameModeDialog() {
         String[] options = {"Local Game", "Host Network Game", "Join Network Game"};
         int choice = JOptionPane.showOptionDialog(null, 
             "Select game mode:", "Checkers", 
@@ -19,20 +19,20 @@ public class CheckersGame extends JFrame {
             case 2: joinNetworkGame(); break;
             default: // Local game - no changes needed
         }
-    }
+    }*/
     
     private void setupGUI() {
         setTitle("Checkers Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         
-        //bottom fo screen text
+        // Bottom fo screen text
         JLabel statusLabel = new JLabel("Player 1's Turn", JLabel.CENTER);
         statusLabel.setFont(new Font("Arial", Font.BOLD, 16));
         JLabel timerLabel = new JLabel("Time: 0s", JLabel.CENTER);
         timerLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         
-        //game init
+        // Game initialization
         CheckersBoard boardPanel = new CheckersBoard(null);
         GameController gameController = new GameController(statusLabel, timerLabel);
         

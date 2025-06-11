@@ -105,7 +105,6 @@ public class BoardLogic {
         }
     }
     
-    // Updated getMovablePieces to handle multi-jump
     public List<Point> getMovablePieces(int player, boolean inMultiJump, Point multiJumpPiece) {
         List<Point> movable = new ArrayList<>();
         
@@ -117,7 +116,6 @@ public class BoardLogic {
             return movable;
         }
         
-        // Normal movable pieces logic
         boolean capturesAvailable = hasAvailableCaptures(player);
         
         for (int row = 0; row < Constants.BOARD_SIZE; row++) {
